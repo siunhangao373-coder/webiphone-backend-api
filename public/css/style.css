@@ -1,0 +1,353 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(180deg, #f4f6f8, #eef1f5);
+  color: #1f2933;
+  line-height: 1.8;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 50px;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.navbar .logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+}
+
+.navbar a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #ffcc00;
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffcc00;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #000, #1a1a1a);
+  color: #fff;
+}
+
+.hero-text {
+  max-width: 520px;
+  animation: fadeInLeft 1s ease;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 28px;
+  color: #d1d5db;
+}
+
+.hero-text button {
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #ffcc00, #ffb700);
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.hero-text button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 204, 0, 0.45);
+}
+
+.hero img {
+  width: 600px;
+  margin-top: 20px;
+  animation: fadeInRight 1s ease;
+}
+
+/* ================= SECTION ================= */
+.section {
+  padding: 70px 50px;
+  background: #fff;
+  margin: 40px auto;
+  border-radius: 18px;
+  max-width: 1100px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 45px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ================= PRODUCTS ================= */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+}
+
+.product-card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(255,204,0,0.15), transparent 60%);
+  opacity: 0;
+  transition: 0.4s;
+  top: 0;
+  left: 0;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card img {
+  width: 230px;
+  margin-bottom: 20px;
+  transition: 0.4s;
+}
+
+.product-card h3 {
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.product-card p {
+  font-size: 15px;
+  color: #4b5563;
+}
+
+.product-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= PRODUCT DETAIL ================= */
+.product-detail {
+  border-left: 6px solid #ffcc00;
+}
+
+.product-detail p {
+  font-size: 16px;
+  margin-bottom: 18px;
+  color: #374151;
+}
+
+.product-detail ul {
+  margin-top: 20px;
+}
+
+.product-detail li {
+  list-style: none;
+  margin-bottom: 12px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.product-detail li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* ================= PRICING ================= */
+.pricing table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.pricing th,
+.pricing td {
+  padding: 16px;
+  text-align: center;
+}
+
+.pricing th {
+  background: #000;
+  color: #fff;
+}
+
+.pricing tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.pricing tr:hover {
+  background: #fff7cc;
+}
+
+/* ================= ORDER ================= */
+.order form {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.order input,
+.order select {
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.order input:focus,
+.order select:focus {
+  outline: none;
+  border-color: #ffcc00;
+  box-shadow: 0 0 0 3px rgba(255,204,0,0.25);
+}
+
+.order button {
+  padding: 14px;
+  background: linear-gradient(135deg, #000, #333);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.order button:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.price {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 30px 0 18px;
+  margin-top: 60px;
+}
+
+.footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 38px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .section {
+    padding: 50px 24px;
+  }
