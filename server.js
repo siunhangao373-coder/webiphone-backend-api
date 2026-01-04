@@ -30,21 +30,22 @@ app.get('/admin', (req, res) => {
 
 /* ========== DATABASE ========== */
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log(' MongoDB connected'))
+  .then(() => console.log('MongoDB connected'))
   .catch(err => {
-    console.error(' MongoDB connection error:', err.message);
+    console.error('MongoDB connection error:', err.message);
     process.exit(1);
   });
 
 /* ========== API ========== */
+// Thêm đơn đặt trước
 app.post('/api/preorder', async (req, res) => {
   try {
     const { name, phone, email, address, version, storage } = req.body;
 
-    // Validate backend 
-    if (!name || !phone || !email || !address) {
+    // Validate tất cả trường bắt buộc
+    if (!name || !phone || !email || !address || !version || !storage) {
       return res.status(400).json({
-        message: 'Vui lòng nhập đầy đủ thông tin'
+        message: 'Vui lòng nhập đầy đủ thông tin, bao gồm phiên bản và dung lượng'
       });
     }
 
@@ -60,7 +61,7 @@ app.post('/api/preorder', async (req, res) => {
     await order.save();
 
     res.status(201).json({
-      message: ' Đặt trước thành công!'
+      message: 'Đặt trước thành công!'
     });
 
   } catch (err) {
@@ -76,11 +77,13 @@ app.post('/api/preorder', async (req, res) => {
   }
 });
 
+// Lấy danh sách đơn đặt trước (cho admin)
 app.get('/api/preorders', async (req, res) => {
   try {
     const orders = await PreOrder.find().sort({ createdAt: -1 });
     res.json(orders);
   } catch (err) {
+    console.error(err);
     res.status(500).json({
       message: 'Lỗi lấy danh sách đơn hàng'
     });
@@ -89,5 +92,5 @@ app.get('/api/preorders', async (req, res) => {
 
 /* ========== START SERVER ========== */
 app.listen(PORT, () => {
-  console.log(` Server chạy tại http://localhost:${PORT}`);
+  console.log(`Server chạy tại http://localhost:${PORT}`);
 });

@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-
 const PreOrderSchema = new mongoose.Schema({
-name: { type: String, required: true },
-phone: { type: String, required: true },
-email: { type: String, required: true },
-address: { type: String, required: true },
-createdAt: { type: Date, default: Date.now }
+  name: { type: String, required: true },
+  phone: { type: String, required: true },
+  email: { type: String, required: true },
+  address: { type: String, required: true },
+  version: { type: String, required: true }, 
+  storage: { type: String, required: true }, 
+  createdAt: { type: Date, default: Date.now }
 });
-
 
 module.exports = mongoose.model('PreOrder', PreOrderSchema);
